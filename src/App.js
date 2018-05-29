@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import './App.css';
-import { withStyles, Input, TextField } from '@material-ui/core'
+import { withStyles, TextField } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
-import ReactAutosuggest from './ReduxAutosuggest'
+// import ReduxAutosuggest from './ReduxAutosuggest'
 import { reduxForm, Field } from 'redux-form'
-import { connect } from 'react-redux'
-import { handleChange } from './actions'
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const styles = () => ({
   demo: {
@@ -25,16 +21,6 @@ const styles = () => ({
     marginRight: 'auto'
   }
 })
-
-const asyncValidate = (values /*, dispatch */) => {
-  return sleep(1000).then(() => {
-    // simulate server latency
-    if (['foo@foo.com', 'bar@bar.com'].includes(values.email)) {
-      // eslint-disable-next-line no-throw-literal
-      throw { email: 'Email already Exists' }
-    }
-  })
-}
 
 const validate = (values) => {
   console.log('validating form...', values)
@@ -82,6 +68,5 @@ class App extends Component {
 
 
 export default reduxForm({
-  validate,
   form: 'demo-form'
 })(withStyles(styles)(App))
