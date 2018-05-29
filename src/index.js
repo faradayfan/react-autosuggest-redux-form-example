@@ -20,7 +20,7 @@ const store = createStore(
     form: formReducer,
     app: appReducer,
   }),
-  {},
+  undefined,
   enhancer
 )
 

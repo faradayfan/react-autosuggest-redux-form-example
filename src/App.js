@@ -37,7 +37,7 @@ const onSuccess = () => {
 
 class App extends Component {
   render() {
-    const { classes, handleSubmit, demoValue, handleOnChange } = this.props
+    const { classes, handleSubmit } = this.props
 
     return (
       <div className={this.props.classes.demo}>
@@ -52,7 +52,7 @@ class App extends Component {
               type,
               meta: { touched, error, warning } }) => (
                 <FormControl className={classes.formControl} error aria-describedby="name-error-text">
-                  <TextField {...input} className={classes.demo} placeholder={label} type={type} />
+                  <TextField {...input} className={classes.demo} placeholder={label} type={type} autoComplete="off" />
                   {touched && error && <FormHelperText id="name-error-text">{error}</FormHelperText>}
                 </FormControl>
               )}
@@ -68,5 +68,6 @@ class App extends Component {
 
 
 export default reduxForm({
+  validate,
   form: 'demo-form'
 })(withStyles(styles)(App))
